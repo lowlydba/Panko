@@ -1,3 +1,5 @@
+/* Source: https://github.com/LowlyDBA/Panko */
+
 /* Set schema and table for version info from Flyway config */
 DECLARE @versionSchema NVARCHAR(128) = N'administrative';
 DECLARE @versionTable NVARCHAR(128) = N'schema_version';
