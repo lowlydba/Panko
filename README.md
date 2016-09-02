@@ -1,2 +1,2 @@
 # Panko
-SQL callbacks to add a change log to [FlywayDB](https://flywaydb.org/) in MSSQL.
+SQL callbacks to add change log functionality to [FlywayDB](https://flywaydb.org/)
