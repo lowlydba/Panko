@@ -1,5 +1,5 @@
 /* Set schema where Flyway stores its data*/
-DECLARE @flywaySchema NVARCHAR(128) = N'administrative';
+DECLARE @flywaySchema NVARCHAR(128) = N'dbo';
 DECLARE @flywayTable NVARCHAR(128) = N'schema_changelog';
 
 /* Set new changelog table name */
