@@ -75,11 +75,10 @@ SELECT @sqlLogInsert = N'
     FROM [dbo].[start_all_objects_temp] AS [sao]
 	   CROSS JOIN ' + QUOTENAME(@changelogTempSchema) + '.' + QUOTENAME(@changelogObjectTable) + ' AS [cst]
 	   LEFT JOIN [sys].[all_objects] AS [ao] ON [ao].[object_id] = [sao].[object_id]
-    WHERE [ao].[object_id] IS NULL;
+    WHERE [ao].[object_id] IS NULL;' +
     
-    --Cleanup tables
-    DROP TABLE IF EXISTS ' + QUOTENAME(@changelogTempSchema) + '.' + QUOTENAME(@changelogStartTable) + ';
-    DROP TABLE IF EXISTS ' + QUOTENAME(@changelogTempSchema) + '.' + QUOTENAME(@changelogObjectTable) + ';
-    '
+    --Cleanup working tables
+    N'DROP TABLE IF EXISTS ' + QUOTENAME(@changelogTempSchema) + '.' + QUOTENAME(@changelogStartTable) + ';
+    DROP TABLE IF EXISTS ' + QUOTENAME(@changelogTempSchema) + '.' + QUOTENAME(@changelogObjectTable) + ';'
 
 EXEC sp_executesql @sqlLogInsert;
