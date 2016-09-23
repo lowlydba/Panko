@@ -1,9 +1,9 @@
 /* Set schema where Flyway stores its data*/
-DECLARE @flywaySchema NVARCHAR(128) = N'dbo';
+DECLARE @flywaySchema sysname = N'dbo';
 
 /* Set Flyway's configured table and desired name of new changelog table */
-DECLARE @versionTable NVARCHAR(128) = N'schema_version';
-DECLARE @changelogTable NVARCHAR(128) = N'schema_changelog';
+DECLARE @versionTable sysname = N'schema_version';
+DECLARE @changelogTable sysname = N'schema_changelog';
 
 --========================--
 -- Do not edit below here --
