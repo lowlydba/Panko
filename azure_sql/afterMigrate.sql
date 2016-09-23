@@ -1,9 +1,9 @@
 /* Set schema where Flyway stores its data*/
-DECLARE @flywaySchema NVARCHAR(128) = N'dbo';
-DECLARE @flywayTable NVARCHAR(128) = N'schema_version';
+DECLARE @flywaySchema sysname = N'dbo';
+DECLARE @flywayTable sysname = N'schema_version';
 
 /* Set new changelog table name */
-DECLARE @versionTable NVARCHAR(128) = N'schema_version';
+DECLARE @versionTable sysname = N'schema_version';
 
 --========================--
 -- Do not edit below here --
@@ -11,9 +11,9 @@ DECLARE @versionTable NVARCHAR(128) = N'schema_version';
 
 /* Tables used temporarily during migration
  put into guest schema for low probability of conflicts */
-DECLARE @changelogStartTable NVARCHAR(128) = N'migration_start';
-DECLARE @changelogObjectTable NVARCHAR(128) = N'premigration_objects';
-DECLARE @changelogTempSchema NVARCHAR(128) = N'guest';
+DECLARE @changelogStartTable sysname = N'migration_start';
+DECLARE @changelogObjectTable sysname = N'premigration_objects';
+DECLARE @changelogTempSchema sysname = N'guest';
 
 DECLARE @sqlLogInsert NVARCHAR(MAX) = N''; 
 
