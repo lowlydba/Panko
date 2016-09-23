@@ -10,6 +10,12 @@ The changes will be grouped by each run of the `migrate` command, so if you have
 ## Version 
 * Version 0.1
 
+##Tests
+Currently works with 
+* SQL Server 2016 
+* Azure SQL 12
+
+
 ## Contact
 #### John M
 * Blog: [TheLowlyDBA](http://thelowlydba.blogspot.com/)
