@@ -14,9 +14,3 @@ The changes will be grouped by each run of the `migrate` command, so if you have
 Currently works with 
 * SQL Server 2016 
 * Azure SQL 12
-
-
-## Contact
-#### John M
-* Blog: [TheLowlyDBA](http://thelowlydba.blogspot.com/)
-* [Stack Overflow Profile](http://dba.stackexchange.com/users/45616/john-m?tab=profile)
