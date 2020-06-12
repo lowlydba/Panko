@@ -39,19 +39,19 @@ DECLARE @parmDefinitionNextVersion NVARCHAR(MAX) = N'';
 
 DECLARE @sqlLogCreate NVARCHAR(MAX) = N'';
 
-DECLARE @migrationStart DATETIME = GETDATE();
+DECLARE @migrationStart DATETIME2 = GETDATE();
 DECLARE @startVersionID INT = 0;
 
 /* Create temp tables to store pre-migration metadata*/
 CREATE TABLE ##changelog_start (
 	    [start_version_id] INT NOT NULL
-	   ,[migration_start] DATETIME NOT NULL
+	   ,[migration_start] DATETIME2 NOT NULL
 	   );
 
 CREATE TABLE ##start_all_objects (
-	    [name] NVARCHAR(128) NOT NULL
-	   ,[schema_name] NVARCHAR(128) NOT NULL
-	   ,[type_desc] NVARCHAR(128) NOT NULL
+	    [name] [sysname] NOT NULL
+	   ,[schema_name] [sysname] NOT NULL
+	   ,[type_desc] NVARCHAR(60) NOT NULL
 	   ,[object_id] INT NOT NULL
 	   );
 
@@ -62,9 +62,9 @@ IF  OBJECT_ID(''' + QUOTENAME(@flywaySchema) + '.' + QUOTENAME(@changelogTable) 
 	   CREATE TABLE ' + QUOTENAME(@flywaySchema) + '.' + QUOTENAME(@changelogTable) + '(
 			 [start_version_id] [int] NOT NULL,
 			 [end_version_id] [int] NOT NULL,
-			 [migration_start] DATETIME NOT NULL,
-			 [migration_end] DATETIME NOT NULL,
-			 [schema] [nvarchar](128) NULL,
+			 [migration_start] DATETIME2 NOT NULL,
+			 [migration_end] DATETIME2 NOT NULL,
+			 [schema] [sysname] NULL,
 			 [name] [sysname] NULL,
 			 [type_desc] [nvarchar](60) NULL,
 			 [change] [nvarchar](50) NULL
@@ -91,7 +91,7 @@ INSERT INTO [##start_all_objects]([name]
                                  ,[type_desc]
                                  ,[object_id])
 SELECT [name]
-      ,SCHEMA_NAME(schema_id)
+      ,SCHEMA_NAME([schema_id])
       ,[type_desc]
       ,[OBJECT_ID]
 FROM [sys].[all_objects];

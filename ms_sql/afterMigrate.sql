@@ -39,18 +39,18 @@ DECLARE @parmDefinitionEndVersion NVARCHAR(MAX) = N'';
 
 DECLARE @sqlLogInsert NVARCHAR(MAX) = N''; 
 
-DECLARE @migrationEnd DATETIME = GETDATE();
-DECLARE @migrationStart DATETIME = NULL;
+DECLARE @migrationEnd DATETIME2 = GETDATE();
+DECLARE @migrationStart DATETIME2 = NULL;
 
 DECLARE @endVersionID INT = NULL;
 DECLARE @startVersionID INT = NULL;
 
-CREATE TABLE  #changelog (
+CREATE TABLE #changelog (
 	   [start_version_id] [int] NOT NULL,
 	   [end_version_id] [int] NOT NULL,
-	   [migration_start] DATETIME NOT NULL,
-	   [migration_end] DATETIME NOT NULL,
-	   [schema] [nvarchar](128) NULL,
+	   [migration_start] DATETIME2 NOT NULL,
+	   [migration_end] DATETIME2 NOT NULL,
+	   [schema] [sysname] NULL,
 	   [name] [sysname] NULL,
 	   [type_desc] [nvarchar](60) NULL,
 	   [change] [nvarchar](50) NULL
