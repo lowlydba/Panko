@@ -45,7 +45,7 @@ DECLARE @sqlLogInsert NVARCHAR(MAX) = N'';
 /* Add all created, modified, and dropped objects to the log */
 SELECT @sqlLogInsert = N'
     DECLARE @endVersionID INT = NULL;
-    DECLARE @migrationEnd DATETIME = GETDATE();' +
+    DECLARE @migrationEnd DATETIME2 = GETDATE();' +
 
     /* Get last version ID of migration */
     N'SELECT  @endversionID = MAX([installed_rank])
